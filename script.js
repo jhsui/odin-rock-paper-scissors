@@ -44,16 +44,15 @@ function getHumanChoice() {
 
 //console.log(typeof getHumanChoice());
 
-let humanScore = 0;
-let coputerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
+
     humanChoice = humanChoice.toLowerCase();
-    let message;
+    let message = "Draw";
     if (humanChoice === "scissors") {
         if (computerChoice === "rock") {
             message = "You lose! Rock beats Scissors.";
-            coputerScore++;
+            computerScore++;
         } else if (computerChoice === "paper") {
             message = "You win! Scissors beats Paper.";
             humanScore++;
@@ -63,7 +62,7 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice === "paper") {
         if (computerChoice === "scissors") {
             message = "You lose! Scissors beats Paper.";
-            coputerScore++;
+            computerScore++;
         } else if (computerChoice === "rock") {
             message = "You win! Paper beats Rock.";
             humanScore++;
@@ -73,7 +72,7 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice === "rock") {
         if (computerChoice === "paper") {
             message = "You lose! Paper beats Rock.";
-            coputerScore++;
+            computerScore++;
         } else if (computerChoice === "scissors") {
             message = "You win! Rock beats Scissors.";
             humanScore++;
@@ -82,7 +81,27 @@ function playRound(humanChoice, computerChoice) {
     console.log(message);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+let humanScore = 0;
+let computerScore = 0;
 
-playRound(humanSelection, computerSelection);
+
+function playGame() {
+    // const humanSelection = getHumanChoice();
+    // const computerSelection = getComputerChoice();
+
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+
+    console.log(`Your score: ${humanScore}, Bot score: ${computerScore}`);
+
+    humanScore = 0;
+    computerScore = 0;
+}
+
+playGame();
+playGame();
+
+

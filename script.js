@@ -10,4 +10,12 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice());
+//console.log(getComputerChoice());
+
+
+function getHumanChoice() {
+    return input = prompt("What is your choice?");
+
+}
+
+console.log(getHumanChoice());

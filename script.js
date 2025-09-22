@@ -14,8 +14,12 @@ function getComputerChoice() {
 
 
 function getHumanChoice() {
-    return input = prompt("What is your choice?");
-
+    return prompt("What is your choice?");
 }
 
-console.log(getHumanChoice());
+//console.log(typeof getHumanChoice());
+
+let humanScore = 0;
+let coputerScore = 0;
+
+

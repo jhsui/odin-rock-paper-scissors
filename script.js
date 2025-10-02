@@ -78,21 +78,30 @@ function playRound(humanChoice, computerChoice) {
             humanScore++;
         }
     }
-    console.log(message);
+    // console.log(message);
+    return message;
 }
 
 let humanScore = 0;
 let computerScore = 0;
+
+function gameOver(humanScore, computerScore) {
+    if (humanScore === 5) {
+        return "Game over! You win! If you want to contiue to play, refresh.";
+    }
+
+    if (computerScore === 5) {
+        return "Game over! You lost! If you want to contiue to play, refresh.";
+    }
+
+    return null;
+}
 
 
 function playGame() {
     // const humanSelection = getHumanChoice();
     // const computerSelection = getComputerChoice();
 
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
     playRound(getHumanChoice(), getComputerChoice());
 
     console.log(`Your score: ${humanScore}, Bot score: ${computerScore}`);
@@ -101,7 +110,58 @@ function playGame() {
     computerScore = 0;
 }
 
-playGame();
 //playGame();
 
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
 
+rock.addEventListener("click", function () {
+    result.textContent = playRound("rock", getComputerChoice());
+    div.appendChild(result);
+
+    let ifGameIsOver = gameOver(humanScore, computerScore);
+    if (ifGameIsOver !== null) {
+        const finalResult = document.createElement("p");
+        finalResult.textContent = ifGameIsOver;
+        divScore.appendChild(finalResult);
+
+
+
+    }
+})
+paper.addEventListener("click", function () {
+    result.textContent = playRound("paper", getComputerChoice());
+    div.appendChild(result);
+
+    let ifGameIsOver = gameOver(humanScore, computerScore);
+    if (ifGameIsOver !== null) {
+        const finalResult = document.createElement("p");
+        finalResult.textContent = ifGameIsOver;
+        divScore.appendChild(finalResult);
+    }
+
+})
+scissors.addEventListener("click", function () {
+    result.textContent = playRound("scissors", getComputerChoice());
+    div.appendChild(result);
+
+    let ifGameIsOver = gameOver(humanScore, computerScore);
+    if (ifGameIsOver !== null) {
+        const finalResult = document.createElement("p");
+        finalResult.textContent = ifGameIsOver;
+        divScore.appendChild(finalResult);
+    }
+
+})
+
+const result = document.createElement("p");
+const div = document.querySelector("div");
+
+const divScore = document.querySelector("#score");
+
+
+// divScore.addEventListener("click", function () {
+//     finalResult.textContent = gameOver();
+//     divScore.appendChild(finalResult);
+// });
